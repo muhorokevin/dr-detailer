@@ -9,7 +9,6 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Full CORS Setup with Preflight Response
 const allowedOrigins = [
   "https://dr-detailer-i2dd0egcp-kevins-projects-34e71484.vercel.app",
   "http://localhost:5173"
@@ -30,17 +29,14 @@ app.use(
   })
 );
 
-// ✅ Middleware to handle preflight requests
+// ✅ Respond to preflight CORS requests
 app.options("*", cors());
 
-// Middleware
 app.use(express.json());
 
-// Routes
 app.use('/api/admin', adminRoutes);
 app.use('/api/bookings', bookingsRoute);
 
-// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
