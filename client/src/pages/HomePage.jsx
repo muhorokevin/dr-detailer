@@ -29,7 +29,7 @@ export default function HomePage() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          src="/drdetailer01.png"
+          src="/car.png"
           alt="Luxury car"
           className="w-full max-w-xl rounded-lg shadow-xl mt-10 md:mt-0"
         />
@@ -110,7 +110,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-[#0B0E1A] text-gray-400 py-10 px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
-          <img src="/logo.svg" alt="Logo" className="mb-4" />
+          <img src="/logo.png" alt="Logo" className="mb-4 w-24" />
           <p>© 2025 Dr.Detailer. All rights reserved.</p>
         </div>
         <div>
