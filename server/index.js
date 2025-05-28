@@ -9,8 +9,31 @@ dotenv.config();
 
 const app = express();
 
+// ✅ Full CORS Setup with Preflight Response
+const allowedOrigins = [
+  "https://dr-detailer-i2dd0egcp-kevins-projects-34e71484.vercel.app",
+  "http://localhost:5173"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+// ✅ Middleware to handle preflight requests
+app.options("*", cors());
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Routes
