@@ -22,23 +22,21 @@ const ResetPassword = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("https://dr-detailer-backend.onrender.com/api/reset-password"/${token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
+  const res = await fetch(`https://dr-detailer-backend.onrender.com/api/reset-password/${token}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ password }),
+  });
 
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.message || "Reset failed");
-      } else {
-        setMessage("Password reset successfully. You can now login.");
-      }
-    } catch (err) {
-      setError("Something went wrong.");
-    } finally {
-      setLoading(false);
-    }
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || "Failed to reset password");
+  setSuccess(true);
+} catch (err) {
+  setError(err.message);
+} finally {
+  setLoading(false);
+}
+
   };
 
   return (
