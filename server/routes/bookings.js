@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 // 🟢 GET /api/bookings → Fetch all bookings
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM bookings ORDER BY date DESC');
     res.json(result.rows);
