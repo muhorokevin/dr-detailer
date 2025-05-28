@@ -13,7 +13,7 @@ const AdminLogin = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await fetch("http://localhost:5000/api/admin/login", {
+      const res = await fetch("https://dr-detailer-backend.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
