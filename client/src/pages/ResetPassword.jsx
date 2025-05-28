@@ -9,6 +9,7 @@ const ResetPassword = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false); // ✅ Added this
 
   const handleReset = async (e) => {
     e.preventDefault();
@@ -22,21 +23,22 @@ const ResetPassword = () => {
 
     setLoading(true);
     try {
-  const res = await fetch(`https://dr-detailer-backend.onrender.com/api/reset-password/${token}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password }),
-  });
+      const res = await fetch(`https://dr-detailer-backend.onrender.com/api/reset-password/${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
 
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.message || "Failed to reset password");
-  setSuccess(true);
-} catch (err) {
-  setError(err.message);
-} finally {
-  setLoading(false);
-}
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to reset password");
 
+      setSuccess(true);
+      setMessage("✅ Password successfully reset. You can now log in.");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
