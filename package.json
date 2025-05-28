@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "chmod +x node_modules/.bin/vite && vite build",
-    "preview": "vite preview"
+ "prebuild": "chmod +x ./node_modules/.bin/vite",    "preview": "vite preview"
   },
   "dependencies": {
     "dotenv-flow": "^4.1.0",
