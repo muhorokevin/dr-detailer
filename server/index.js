@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import bookingsRoute from './routes/bookings.js';
 import adminRoutes from './routes/admin.js';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 dotenv.config();
 

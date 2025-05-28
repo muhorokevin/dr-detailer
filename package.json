@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "chmod +x ./node_modules/.bin/vite",   
-     "preview": "vite preview"
+    "prebuild": "chmod +x ./node_modules/.bin/vite",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "dotenv-flow": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
