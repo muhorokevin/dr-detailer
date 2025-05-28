@@ -110,7 +110,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-[#0B0E1A] text-gray-400 py-10 px-6 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
-          <img src="/logo.png" alt="Logo" className="mb-4 w-24" />
+          <img src="/logo.jpg" alt="Logo" className="mb-4 w-24" />
           <p>© 2025 Dr.Detailer. All rights reserved.</p>
         </div>
         <div>
