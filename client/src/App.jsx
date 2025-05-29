@@ -7,6 +7,7 @@ import AdminSignup from "./pages/AdminSignup";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import HomePage from "./pages/HomePage";
+import Catalogue from "./pages/Catalogue";
 
 
 // ⏱️ Session timeout setup (30 mins)
@@ -48,6 +49,7 @@ function App() {
         <Route path="/admin/signup" element={<AdminSignup />} />
         <Route path="/admin/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/catalogue" element={<Catalogue/>}/>
         <Route
           path="/admin"
           element={

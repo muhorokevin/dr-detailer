@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -63,46 +64,59 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      <nav className="flex justify-between items-center px-6 py-4 bg-black bg-opacity-80 absolute w-full z-10">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-6 py-4 bg-black bg-opacity-90 fixed w-full z-50 max-w-screen-xl mx-auto left-0 right-0">
         <img src="/logo-01.png" alt="Dr. Detailer Logo" className="h-10" />
-        <ul className="flex space-x-6 text-white font-medium">
-          <li><a href="/" className="hover:text-red-500">Home</a></li>
-          <li><a href="#catalogue" className="hover:text-red-500">Catalogue</a></li>
-          <li><a href="#about" className="hover:text-red-500">About</a></li>
-          <li><a href="#contact" className="hover:text-red-500">Contact</a></li>
+        <ul className="flex space-x-6">
+          <li><Link to="/" className="hover:text-red-500 transition">Home</Link></li>
+          <li><Link to="/catalogue" className="hover:text-red-500 transition">Catalogue</Link></li>
+          <li><Link to="/about" className="hover:text-red-500 transition">About</Link></li>
+          <li><Link to="/contact" className="hover:text-red-500 transition">Contact</Link></li>
         </ul>
       </nav>
 
-      <div className="relative h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('/gwagon.jpeg')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get Your Car Looking Its Best</h1>
-          <a href="#booking" className="bg-red-600 text-white px-6 py-3 rounded hover:bg-red-700 transition">BOOK APPOINTMENT</a>
+      {/* Hero */}
+      <div className="relative h-[90vh] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('/gwagon.jpeg')" }}>
+        <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center px-4 w-full">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Book Premium Mobile Detailing</h1>
+          <a href="#booking" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-bold transition">BOOK APPOINTMENT</a>
         </div>
       </div>
 
-      <div id="booking" className="px-4 py-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10">Schedule Service</h2>
+      {/* Booking Form */}
+      <div id="booking" className="px-6 py-20 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-10">Schedule Your Appointment</h2>
         <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
           <select name="service_type" value={formData.service_type} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white">
             <option value="">Select Service</option>
             <option value="exterior">Exterior Detail</option>
             <option value="interior">Interior Detail</option>
+            <option value="full">Full Detail</option>
           </select>
+
           <select name="car_type" value={formData.car_type} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white">
             <option value="">Select Car Type</option>
             <option value="saloon">Saloon</option>
-            <option value="suv">SUV</option>
+            <option value="suv">SUV / Crossover</option>
           </select>
 
-          <input type="text" name="car_details" placeholder="Car Make & Plate" value={formData.car_details} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white col-span-2" />
+          <input
+            type="text"
+            name="car_details"
+            placeholder="Car Make & Plate"
+            value={formData.car_details}
+            onChange={handleChange}
+            className="p-3 rounded bg-gray-800 text-white col-span-2"
+          />
+
           <input type="date" name="date" value={formData.date} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white" />
 
           <select name="time" value={formData.time} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white">
             <option value="">Select Time</option>
-            <option value="9:00">7:00 AM</option>
-            <option value="11:00">10:00 AM</option>
+            <option value="7:00">7:00 AM</option>
+            <option value="10:00">10:00 AM</option>
             <option value="1:00">1:00 PM</option>
-            <option value="3:00">4:00 PM</option>
+            <option value="4:00">4:00 PM</option>
           </select>
 
           <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white" />
@@ -110,7 +124,7 @@ const Booking = () => {
           <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white" />
 
           <div className="col-span-2">
-            <button type="submit" className="w-full bg-red-600 hover:bg-red-700 p-3 rounded text-white font-bold">Continue</button>
+            <button type="submit" className="w-full bg-red-600 hover:bg-red-700 p-3 rounded text-white font-bold">Submit Booking</button>
           </div>
         </form>
 
