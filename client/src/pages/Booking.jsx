@@ -65,26 +65,33 @@ const Booking = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 py-4 bg-black bg-opacity-90 fixed w-full z-50 max-w-screen-xl mx-auto left-0 right-0">
-        <img src="/logo-01.png" alt="Dr. Detailer Logo" className="h-10" />
-        <ul className="flex space-x-6">
-          <li><Link to="/" className="hover:text-red-500 transition">Home</Link></li>
-          <li><Link to="/catalogue" className="hover:text-red-500 transition">Catalogue</Link></li>
-          <li><Link to="/about" className="hover:text-red-500 transition">About</Link></li>
-          <li><Link to="/contact" className="hover:text-red-500 transition">Contact</Link></li>
-        </ul>
-      </nav>
+      <header className="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-90 border-b border-gray-800">
+        <div className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+          <img src="/logo-01.png" alt="Dr. Detailer Logo" className="h-10" />
+          <ul className="flex space-x-6 text-sm font-medium">
+            <li><Link to="/" className="hover:text-red-500">Home</Link></li>
+            <li><Link to="/catalogue" className="hover:text-red-500">Catalogue</Link></li>
+            <li><Link to="/about" className="hover:text-red-500">About</Link></li>
+            <li><Link to="/contact" className="hover:text-red-500">Contact</Link></li>
+          </ul>
+        </div>
+      </header>
 
       {/* Hero */}
-      <div className="relative h-[90vh] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('/gwagon.jpeg')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-center items-center text-center px-4 w-full">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Book Premium Mobile Detailing</h1>
-          <a href="#booking" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-bold transition">BOOK APPOINTMENT</a>
+      <section className="relative h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: "url('/gwagon.jpeg')" }}>
+        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 max-w-2xl mx-auto leading-tight">
+            Book Premium Mobile Detailing
+          </h1>
+          <a href="#booking" className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-bold transition">
+            BOOK APPOINTMENT
+          </a>
         </div>
-      </div>
+      </section>
 
       {/* Booking Form */}
-      <div id="booking" className="px-6 py-20 max-w-5xl mx-auto">
+      <section id="booking" className="px-6 py-20 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-10">Schedule Your Appointment</h2>
         <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
           <select name="service_type" value={formData.service_type} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white">
@@ -124,13 +131,15 @@ const Booking = () => {
           <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="p-3 rounded bg-gray-800 text-white" />
 
           <div className="col-span-2">
-            <button type="submit" className="w-full bg-red-600 hover:bg-red-700 p-3 rounded text-white font-bold">Submit Booking</button>
+            <button type="submit" className="w-full bg-red-600 hover:bg-red-700 p-3 rounded text-white font-bold">
+              Submit Booking
+            </button>
           </div>
         </form>
 
         {success && <p className="text-green-400 font-semibold text-center mt-6">✅ Booking successful!</p>}
         {error && <p className="text-red-400 font-semibold text-center mt-6">❌ {error}</p>}
-      </div>
+      </section>
     </div>
   );
 };
